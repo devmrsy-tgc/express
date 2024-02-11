@@ -4,3 +4,23 @@ will use expressjs as framework to implement our backend application.
 
 how to install expres.. run below command
     - npm install expres -> hit enter
+
+
+------------DAY 2---------
+
+#clone the link as below:
+
+https://github.com/devmrsy-tgc/express
+
+hit command npm i in same direcory to install the dependency.
+
+#How to run the project
+
+open your currrent repository and hit below command
+
+npm start
+
+this command will run your porject.. and the base api is '/api'.
+
+you can hit this url http://localhost:8000/api/
+
