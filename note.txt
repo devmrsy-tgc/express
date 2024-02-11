@@ -1,0 +1,6 @@
+in backend will use node js to run the application.. you should have nodejs installed in your system.
+
+will use expressjs as framework to implement our backend application.
+
+how to install expres.. run below command
+    - npm install expres -> hit enter
