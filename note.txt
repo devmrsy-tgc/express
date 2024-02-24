@@ -24,3 +24,42 @@ this command will run your porject.. and the base api is '/api'.
 
 you can hit this url http://localhost:8000/api/
 
+
+------------18-02-24---------
+
+REST API (application programming interface) -> Representational State transfer
+
+HTTP METHOD
+    GET - to get the data
+    POST - to create new document
+    PUT - to update the document
+    PATCH - to update the subset of the document
+    DELETE - to delete or remove the document from DB
+
+MVC MODEL
+
+M - MODEL
+    sign up
+        create schema to sign up user
+            email : string;
+            name : string
+            password : string
+            userId : number
+v - VIEW
+    in this module will manage the business logic or our individual controller and also deal with mongodb to perform CRUD operation into DB.
+
+C - CONTROLLER
+    - just like a enter point for a specific feature or functionality.
+    - you can take login as an example.
+
+basePath vs controller
+
+
+Requirement is to create backend for employee mgmt system.
+
+login,
+sign up process for the user
+get user information
+authentication for protected route
+error handling
+model for validating the document.
