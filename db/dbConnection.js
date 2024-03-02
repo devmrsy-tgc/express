@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'; // ORM -> object relational model
 
 const dbConnection = async () => {
 	try {

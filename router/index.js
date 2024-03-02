@@ -1,36 +1,47 @@
 import { Router } from 'express';
+import { userModel } from '../model/user.js';
 
 const router = Router();
 
 // controller
-router.get('/login', (req, res) => {
+router.post('/login', async (req, res) => {
 	const { userName, password } = req.body;
 	try {
-		if (!(userName === 'frank' && password === 'admin@1234')) {
-			throw new Error('wrong cred!!');
+		console.log('-----------', userName, password, '----------------------');
+
+		const response = await userModel.findOne({ userName: userName, password: password });
+
+		if(!response) {
+			res.status(401).json({ success: false, response: 'Unauthorized user' });
 		}
 
-		res.status(200).json({ success: true, token: 'qwer!@#$12323423' });
+		console.log('response&&&&&&&&&&&&&&&7', response);
+
+		res.status(200).json({ success: true, response: response });
 	} catch (error) {
 		res.status(400).json({ success: false, error: error.message });
 	}
 });
 
-router.post('/registration', (req, res) => {
-	const { name, email, mobileNumber } = req.body;
+router.post('/registration', async (req, res) => {
+	const { name, email, mobileNumber, password } = req.body;
 	try {
-		if (!(name && email && mobileNumber)) {
-			throw new Error('enter complete details!!');
-		}
+		// if (!(name && email && mobileNumber )) {
+		// 	throw new Error('enter complete details!!');
+		// }
+
+		console.log('#########', email.split('@')[0], typeof email.split('@')[0]);
 
 		const resBody = {
 			...req.body,
 			userName: email.split('@')[0],
-			id: Math.floor(Math.random() * 10000000000),
-			success: true,
 		};
 
-		res.status(201).json({ ...resBody });
+		const response = await userModel.create(resBody);
+
+		console.log(response);
+
+		res.status(201).json({ ...response._doc }); // Only returning document data
 	} catch (error) {
 		res.status(400).json({ success: false, error: error.message });
 	}
